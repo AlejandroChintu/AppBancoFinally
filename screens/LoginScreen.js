@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#121212',
+    backgroundColor: '#FFFFFF', // White background
     padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#E60000', // Banorte red
     marginBottom: 20,
   },
   inputContainer: {
@@ -97,20 +97,20 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#007BFF',
+    borderBottomColor: '#E60000', // Banorte red
     marginBottom: 20,
   },
   input: {
     flex: 1,
     height: 40,
-    color: '#ffffff',
+    color: '#333333', // Dark gray text
     fontSize: 16,
   },
   icon: {
     marginRight: 10, 
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#E60000', // Banorte red
     padding: 15,
     borderRadius: 10,
     width: '100%',
@@ -118,11 +118,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    color: '#ffffff',
+    color: '#FFFFFF', // White text
     fontWeight: 'bold',
   },
   linkText: {
-    color: '#007BFF',
+    color: '#E60000', // Banorte red
     marginTop: 10,
   },
 });

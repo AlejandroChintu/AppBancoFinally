@@ -49,8 +49,10 @@ const HomeScreen = ({ route, navigation }) => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.greeting}>Hola, {user.nombre}</Text>
+        <Text style={styles.newPhrase}>Estamos aquí para ayudarte.</Text>
         <View style={styles.saldoContainer}>
           <Text style={styles.saldoTitle}>Saldo disponible</Text>
+          <Text style={styles.newSlogan}>La mejor experiencia bancaria.</Text>
           {loading ? (
             <ActivityIndicator size="large" color="#4caf50" />
           ) : (
@@ -96,7 +98,7 @@ const HomeScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#FFFFFF', // White background
     padding: 20,
   },
   header: {
@@ -106,10 +108,16 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#E60000', // Banorte red
+  },
+  newPhrase: {
+    fontSize: 18,
+    color: '#E60000', // Banorte red
+    textAlign: 'center',
+    marginBottom: 10,
   },
   saldoContainer: {
-    backgroundColor: '#2a2a2a',
+    backgroundColor: '#F5F5F5', // Light gray background
     padding: 20,
     borderRadius: 10,
     marginTop: 15,
@@ -118,19 +126,25 @@ const styles = StyleSheet.create({
   },
   saldoTitle: {
     fontSize: 18,
-    color: '#cccccc',
+    color: '#333333', // Dark gray text
+  },
+  newSlogan: {
+    fontSize: 16,
+    color: '#333333', // Dark gray text
+    textAlign: 'center',
+    marginBottom: 10,
   },
   saldoAmount: {
     fontSize: 35,
     fontWeight: 'bold',
-    color: '#4caf50',
+    color: '#E60000', // Banorte red
     marginTop: 10,
   },
   optionsContainer: {
     marginTop: 40,
   },
   optionButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#E60000', // Banorte red
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -145,13 +159,13 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#FFFFFF', // White text
   },
   icon: {
     marginRight: 10,
   },
   logoutButton: {
-    backgroundColor: '#FF5733',
+    backgroundColor: '#333333', // Dark gray background
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -164,7 +178,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   logoutText: {
-    color: '#ffffff',
+    color: '#FFFFFF', // White text
     fontSize: 18,
     fontWeight: 'bold',
   },

@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+// WelcomeScreen component
 const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      {/* Title */}
       <Text style={styles.title}>¡Bienvenido!</Text>
-      <Text style={styles.subtitle}>Comienza a gestionar tu dinero de manera rápida y segura.</Text>
+      {/* Inspirational Phrase */}
+      <Text style={styles.inspirationalPhrase}>El futuro de tus finanzas comienza aquí.</Text>
 
+      {/* Button to navigate to LoginScreen */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('LoginScreen')}
@@ -14,6 +18,7 @@ const WelcomeScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Iniciar sesión</Text>
       </TouchableOpacity>
 
+      {/* Button to navigate to RegisterScreen */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('RegisterScreen')}
@@ -24,10 +29,11 @@ const WelcomeScreen = ({ navigation }) => {
   );
 };
 
+// Styles for the WelcomeScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#E60000', // Banorte red
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -38,14 +44,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  subtitle: {
-    fontSize: 16,
-    color: '#AAAAAA',
+  inspirationalPhrase: {
+    fontSize: 18,
+    color: '#FFFFFF',
     textAlign: 'center',
     marginBottom: 40,
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 10,
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: '#E60000', // Banorte red
     fontSize: 18,
     fontWeight: 'bold',
   },

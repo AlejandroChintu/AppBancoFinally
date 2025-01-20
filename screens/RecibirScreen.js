@@ -82,6 +82,9 @@ const RecibirScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Recibir Dinero</Text>
+      <Text style={styles.phrase}>La mejor experiencia bancaria.</Text>
+
       {!transferencia && <Text style={styles.message}>Recibir dinero es fácil y rápido</Text>}
 
       {transferencia ? (
@@ -137,13 +140,25 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#121212',
+    backgroundColor: '#FFFFFF', // White background
     padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#E60000', // Banorte red
+    marginBottom: 20,
+  },
+  phrase: {
+    fontSize: 18,
+    color: '#E60000', // Banorte red
+    textAlign: 'center',
+    marginBottom: 20,
   },
   message: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#E60000', // Banorte red
     marginBottom: 20,
   },
   transferenciaContainer: {

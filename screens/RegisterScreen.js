@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
+// RegisterScreen component
 const RegisterScreen = ({ navigation }) => {
   const [nombre, setFirstName] = useState('');
   const [apellido_p, setLastName] = useState('');
@@ -8,6 +9,7 @@ const RegisterScreen = ({ navigation }) => {
   const [correo, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Handle register
   const handleRegister = () => {
     if (!nombre || !apellido_p || !apellido_m || !correo || !password) {
       Alert.alert('Error', 'Todos los campos son obligatorios');
@@ -47,6 +49,7 @@ const RegisterScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Crea una nueva cuenta.</Text>
 
+      {/* Input fields for registration */}
       <TextInput
         placeholder="Nombre"
         placeholderTextColor="#AAAAAA"
@@ -85,10 +88,12 @@ const RegisterScreen = ({ navigation }) => {
         onChangeText={setPassword}
       />
 
+      {/* Button to handle registration */}
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
 
+      {/* Link to navigate to LoginScreen */}
       <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
         <Text style={styles.link}>¿Ya estás registrado? Inicia sesión</Text>
       </TouchableOpacity>
@@ -96,45 +101,46 @@ const RegisterScreen = ({ navigation }) => {
   );
 };
 
+// Styles for the RegisterScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#121212',
+    backgroundColor: '#FFFFFF', // White background
   },
   welcomeText: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#FFFFFF',
+    color: '#E60000', // Banorte red
   },
   input: {
     width: '100%',
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#007BFF',
-    color: '#ffffff',
+    borderBottomColor: '#E60000', // Banorte red
+    color: '#333333', // Dark gray text
     marginBottom: 20,
   },
   button: {
     height: 50,
-    backgroundColor: '#007bff',
+    backgroundColor: '#E60000', // Banorte red
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: '#FFFFFF', // White text
     fontSize: 16,
     fontWeight: 'bold',
   },
   link: {
     marginTop: 20,
     textAlign: 'center',
-    color: '#007bff',
+    color: '#E60000', // Banorte red
   },
 });
 

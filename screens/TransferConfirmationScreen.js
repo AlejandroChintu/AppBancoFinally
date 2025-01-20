@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+// TransferConfirmationScreen component
 export default function TransferConfirmationScreen({ route, navigation }) {
   const { recipientName, amount } = route.params;
   const { user } = route.params;
@@ -17,6 +18,7 @@ export default function TransferConfirmationScreen({ route, navigation }) {
         </Text>
       </View>
 
+      {/* Button to navigate to HomeScreen */}
       <TouchableOpacity
         style={styles.homeButton}
         onPress={() => navigation.navigate('HomeScreen', { user: user })}
@@ -28,16 +30,17 @@ export default function TransferConfirmationScreen({ route, navigation }) {
   );
 }
 
+// Styles for the TransferConfirmationScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    backgroundColor: "#121212", 
+    backgroundColor: "#FFFFFF", // White background
   },
   card: {
-    backgroundColor: "#1F1F1F", 
+    backgroundColor: "#F5F5F5", // Light gray background
     borderRadius: 10,
     padding: 30,
     alignItems: "center",
@@ -53,23 +56,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26, 
     fontWeight: "bold",
-    color: "#4CAF50", 
+    color: "#E60000", // Banorte red
     marginBottom: 10,
   },
   message: {
     fontSize: 18,
-    color: "#fff", 
+    color: "#333333", // Dark gray text
     textAlign: "center",
     lineHeight: 25,
   },
   highlight: {
     fontWeight: "bold",
-    color: "#4CAF50", 
+    color: "#E60000", // Banorte red
   },
   homeButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#1E88E5", 
+    backgroundColor: "#E60000", // Banorte red
     paddingVertical: 15, 
     paddingHorizontal: 25,
     borderRadius: 50, 
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20, 
-    color: "#fff",
+    color: "#FFFFFF", // White text
     fontWeight: "600",
     marginLeft: 10, 
   },

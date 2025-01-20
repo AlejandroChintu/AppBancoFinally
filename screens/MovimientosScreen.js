@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+// MovimientosScreen component
 const MovimientosScreen = ({ route }) => {
   const { userId } = route.params;
   const [movimientos, setMovimientos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fetch movimientos from the backend
   useEffect(() => {
     const obtenerMovimientos = async () => {
       try {
@@ -34,6 +36,7 @@ const MovimientosScreen = ({ route }) => {
     obtenerMovimientos();
   }, [userId]);
 
+  // Render each movimiento item
   const renderItem = ({ item }) => {
     const esTransferenciaRecibida = item.id_destino === userId;
     const monto = esTransferenciaRecibida ? item.monto : -item.monto;

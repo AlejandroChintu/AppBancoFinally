@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, TextInput, Alert, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Button, TextInput, Alert, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { CameraView, Camera } from "expo-camera";
 
+// TransferScreen component
 export default function TransferScreen({ navigation, route }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -12,6 +13,7 @@ export default function TransferScreen({ navigation, route }) {
 
   const { user } = route.params;
 
+  // Request camera permissions
   useEffect(() => {
     const getCameraPermissions = async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -21,6 +23,7 @@ export default function TransferScreen({ navigation, route }) {
     getCameraPermissions();
   }, []);
 
+  // Handle barcode scanned
   const handleBarcodeScanned = ({ type, data }) => {
     setScanned(true);
 
@@ -32,6 +35,7 @@ export default function TransferScreen({ navigation, route }) {
     }
   };
 
+  // Handle transfer
   const handleTransfer = () => {
     if (!monto || parseFloat(monto) <= 0) {
       Alert.alert("Error", "Por favor ingresa un monto válido.");
@@ -72,6 +76,7 @@ export default function TransferScreen({ navigation, route }) {
       });
   };
 
+  // Handle cancel
   const handleCancel = () => {
     navigation.goBack();
   };
@@ -85,78 +90,81 @@ export default function TransferScreen({ navigation, route }) {
   }
 
   return (
-    <View style={styles.container}>
-      {errorMessage ? (
-        <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>
-            El QR que escaneaste no es válido.
-          </Text>
-          <Button
-            title="Volver a intentar"
-            onPress={() => {
-              setErrorMessage(false);
-              setScanned(false);
-            }}
-          />
-        </View>
-      ) : qrData ? (
-        <View style={styles.formContainer}>
-          <Text style={styles.title}>Transferencia para {qrData.nombre}</Text>
-
-          <Text style={styles.label}>Monto</Text>
-          <TextInput
-            style={styles.amountInput}
-            value={monto}
-            onChangeText={setMonto}
-            placeholder="0 MXN"
-            placeholderTextColor="#AAAAAA"
-            keyboardType="numeric"
-          />
-
-          <Text style={styles.label}>Concepto</Text>
-          <TextInput
-            style={styles.conceptInput}
-            value={concepto}
-            onChangeText={setConcepto}
-            placeholder="Ingresa el concepto"
-            placeholderTextColor="#AAAAAA"
-            maxLength={40}
-          />
-
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.roundButton} onPress={handleTransfer}>
-              <Text style={styles.buttonText}>Transferir</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
-              <Text style={styles.buttonText}>Cancelar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      ) : (
-        <>
-          <Text style={styles.title}>Escanea el código QR</Text>
-          {!scanned && (
-            <CameraView
-              onBarcodeScanned={handleBarcodeScanned}
-              barcodeScannerSettings={{
-                barcodeTypes: ["qr", "pdf417"],
-              }}
-              style={styles.scanner}
-            />
-          )}
-          {scanned && (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        {errorMessage ? (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>
+              El QR que escaneaste no es válido.
+            </Text>
             <Button
               title="Volver a intentar"
-              onPress={() => setScanned(false)}
-              color="#1E88E5"
+              onPress={() => {
+                setErrorMessage(false);
+                setScanned(false);
+              }}
             />
-          )}
-        </>
-      )}
-    </View>
+          </View>
+        ) : qrData ? (
+          <View style={styles.formContainer}>
+            <Text style={styles.title}>Transferencia para {qrData.nombre}</Text>
+
+            <Text style={styles.label}>Monto</Text>
+            <TextInput
+              style={styles.amountInput}
+              value={monto}
+              onChangeText={setMonto}
+              placeholder="0 MXN"
+              placeholderTextColor="#AAAAAA"
+              keyboardType="numeric"
+            />
+
+            <Text style={styles.label}>Concepto</Text>
+            <TextInput
+              style={styles.conceptInput}
+              value={concepto}
+              onChangeText={setConcepto}
+              placeholder="Ingresa el concepto"
+              placeholderTextColor="#AAAAAA"
+              maxLength={40}
+            />
+
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.roundButton} onPress={handleTransfer}>
+                <Text style={styles.buttonText}>Transferir</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+                <Text style={styles.buttonText}>Cancelar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <>
+            <Text style={styles.title}>Escanea el código QR</Text>
+            {!scanned && (
+              <CameraView
+                onBarcodeScanned={handleBarcodeScanned}
+                barcodeScannerSettings={{
+                  barcodeTypes: ["qr", "pdf417"],
+                }}
+                style={styles.scanner}
+              />
+            )}
+            {scanned && (
+              <Button
+                title="Volver a intentar"
+                onPress={() => setScanned(false)}
+                color="#1E88E5"
+              />
+            )}
+          </>
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
+// Styles for the TransferScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
