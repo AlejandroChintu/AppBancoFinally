@@ -9,6 +9,8 @@ import TransferScreen from './screens/TransferScreen';
 import RecibirScreen from './screens/RecibirScreen';
 import TransferConfirmationScreen from './screens/TransferConfirmationScreen';
 import MovimientosScreen from './screens/MovimientosScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +18,7 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="WelcomeScreen">
-            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
@@ -24,6 +26,8 @@ export default function App() {
                 <Stack.Screen name="RecibirScreen" component={RecibirScreen} />
                 <Stack.Screen name="TransferConfirmationScreen" component={TransferConfirmationScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="MovimientosScreen" component={MovimientosScreen} />
+                <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+                <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

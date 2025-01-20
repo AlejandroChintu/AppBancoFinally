@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 // WelcomeScreen component
 const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      {/* Logo */}
+      <Image source={require('../assets/logo.png')} style={styles.logo} />
       {/* Title */}
-      <Text style={styles.title}>¡Bienvenido!</Text>
+      <Text style={styles.title}>Bienvenido a Banco XYZ</Text>
       {/* Inspirational Phrase */}
-      <Text style={styles.inspirationalPhrase}>El futuro de tus finanzas comienza aquí.</Text>
+      <Text style={styles.inspirationalPhrase}>El futuro de sus finanzas comienza aquí.</Text>
 
       {/* Button to navigate to LoginScreen */}
       <TouchableOpacity
@@ -38,11 +40,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+  },
   title: {
     fontSize: 32,
     color: '#FFFFFF',
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
   },
   inspirationalPhrase: {
     fontSize: 18,
